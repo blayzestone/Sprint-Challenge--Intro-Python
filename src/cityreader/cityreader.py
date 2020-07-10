@@ -31,19 +31,18 @@ class City:
 cities = []
 
 
-def cityreader(cities=[]):
+def cityreader():
     # TODO Implement the functionality to read from the 'cities.csv' file
     # For each city record, create a new City instance and add it to the
     # `cities` list
+    cities = []
+
     with open("cities.csv") as csvfile:
         reader = csv.reader(csvfile)
-        # for row in reader:
-        #     city = City(row[0], row[3], row[4])
-        #     cities.append(city)
 
         for index, row in enumerate(reader):
             if index != 0:
-                city = City(row[0], row[3], row[4])
+                city = City(row[0], float(row[3]), float(row[4]))
                 cities.append(city)
 
     return cities
@@ -51,7 +50,7 @@ def cityreader(cities=[]):
 
 cities = cityreader()
 
-# Print the list of cities (name, lat, lon), 1 record per line.
+# # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
     print(c)
 
